@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 usersRoute = require("./users/index");
+nominationsRoute = require("./nominations/index");
 
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
@@ -29,6 +30,7 @@ router.get('/', (req, res, nex)=>{
 })
 
 router.use('/users',usersRoute);
+router.use('/nominations',nominationsRoute);
 //router.use('/votes', jwtMiddleware, votesRoute);
 
 
