@@ -28,7 +28,9 @@ class Users{
             lastpasswordchange: null,
             passwordexpires: new Date().getTime() + (90 * 24 * 60 * 60 * 1000), 
             oldpasswords: [],
-            roles:["public"]
+            roles:["public"],
+            horaDeVotacion: null,
+            horaDeDisponibilidad: null
           }
           let result = await this.secColl.insertOne(user);
           //console.log(result);
