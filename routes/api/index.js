@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 usersRoute = require("./users/index");
-nominationsRoute = require("./nominations/index");
+votesRoute = require("./votes/index");
 
 const passport = require('passport');
 const passportJWT = require('passport-jwt');
@@ -21,7 +21,7 @@ passport.use(
   )
 );
 
-//const jwtMiddleware = passport.authenticate('jwt', {session:false});
+const jwtMiddleware = passport.authenticate('jwt', {session:false});
 
 router.use(passport.initialize());
 
@@ -30,8 +30,7 @@ router.get('/', (req, res, nex)=>{
 })
 
 router.use('/users',usersRoute);
-router.use('/nominations',nominationsRoute);
-//router.use('/votes', jwtMiddleware, votesRoute);
+router.use('/votes',jwtMiddleware ,votesRoute);
 
 
 module.exports = router; 
