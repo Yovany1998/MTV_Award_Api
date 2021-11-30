@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require("express");
 let router = express.Router();
 const jwt = require("jsonwebtoken");
@@ -8,6 +9,8 @@ let userModel = new userModelClass();
 router.get('/', (req, res, nex)=>{
     res.status(200).json({msg:"Users index"})
 })
+
+router.use(cors());
 
 router.post('/signin', async (req, res, next) => {
     try {
