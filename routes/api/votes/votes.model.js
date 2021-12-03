@@ -21,6 +21,11 @@ class Nominations{
         }
     }
 
+    async getAll(){
+      let nominations = await this.nominationColl.find({},);
+      return nominations.toArray();
+    }
+
     async sendVotes(idUser,totalVotes, idNomination){
         try {
           //Users

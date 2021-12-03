@@ -9,6 +9,16 @@ router.get('/', (req, res, nex)=>{
     res.status(200).json({msg:"Users index"})
 })
 
+router.get('/all', async (req,res,next)=>{
+    try {
+        const allNominations = await votesModel.getAll();
+        return res.status(200).json(allNominations);
+    } catch (ex) {
+        console.log(ex);
+        return res.status(500).json({msg:"Error al procesar peticion"});
+    }
+});
+
 router.post('/sendvotes', async (req, res, next) => {
     try {
         const {totalVotes, idNomination} = req.body;
