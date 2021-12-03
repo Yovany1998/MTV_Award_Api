@@ -1,9 +1,11 @@
+const cors = require('cors');
 const express = require("express");
 let router = express.Router();
 
 let votesClass = require('./votes.model.js');
 let votesModel = new votesClass();
 
+router.use(cors());
 
 router.get('/', (req, res, nex)=>{
     res.status(200).json({msg:"Users index"})
